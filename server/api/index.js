@@ -16,6 +16,7 @@ app.use('/api/v1/posts', postRoutes);
 app.use('/api/v1/dalle', dalleRoutes);
 
 app.get('/', async (req, res) => {
+    res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
     res.send('Hello from DALL-E!');
 });
 
@@ -33,4 +34,4 @@ app.get('/', async (req, res) => {
 
 // startServer();
 
-export default app;
+module.exports = app;
